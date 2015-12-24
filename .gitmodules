@@ -1,0 +1,3 @@
+[submodule "Dependencies/CryptoSwift"]
+	path = Dependencies/CryptoSwift
+	url = https://github.com/krzyzanowskim/CryptoSwift.git
