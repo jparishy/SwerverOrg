@@ -36,6 +36,14 @@ class UserNewView : View {
                     
                     t.tag("hr")
                     
+                    if t.flash.count > 0 {
+                        for (k,v) in t.flash {
+                            t.div(cssClass: "flash flash-\(k)") { t in
+                                t.p(v)
+                            }
+                        }
+                    }
+                    
                     t.div(cssClass: "container", attrs: ["style":"max-width:400px;margin-left:auto;margin-right:auto;"]) { t in
                         t.form("/users/", cssClass: "form-signin") { t in
                             t.div(cssClass: "row") { t in

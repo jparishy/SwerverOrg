@@ -15,7 +15,7 @@ import Swerver
 
 let ApplicationSecret: String = "kj4ogjt0dUcSW6UwSbhH68qi8h1x21Ba"
 
-Application.start(ApplicationSecret, databaseConfiguration: DatabaseConfiguration(username: "jp", password: "password", databaseName: "notes")) {
+MainApplication.start(ApplicationSecret, databaseConfiguration: DatabaseConfiguration(username: "jp", password: "password", databaseName: "notes")) {
     app in
     
     let router = Router([
@@ -23,7 +23,7 @@ Application.start(ApplicationSecret, databaseConfiguration: DatabaseConfiguratio
         Resource(name: "users", controller: UsersController(application: app)),
         
         // Using Application#resource allows for customizing the subroutes
-        app.resource("pages") {
+        app.resource("pages", namespace: nil) {
             (c: PagesController) -> [ResourceSubroute] in
             return [
                 ResourceSubroute(method: .GET, path: "/",  action: .Custom(handler: c.home)),
@@ -32,7 +32,7 @@ Application.start(ApplicationSecret, databaseConfiguration: DatabaseConfiguratio
             ]
         },
         
-        app.resource("sessions") {
+        app.resource("sessions", namespace: nil) {
             (c: SessionsController) -> [ResourceSubroute] in
             return [
                 ResourceSubroute(method: .GET, path: "/sign_in",  action: .Custom(handler: c.index)),

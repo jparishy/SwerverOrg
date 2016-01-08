@@ -77,6 +77,6 @@ extension User {
 
 extension User : CustomStringConvertible {
     var description: String {
-        return "<Todo: id=\(id); email=\(String(email));>"
+        return "<User: id=\(id); email=\(String(email));>"
     }
 }
